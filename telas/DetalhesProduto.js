@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Text, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { api } from '../servicos/api';
 
 export default function DetalhesProduto({ route }) {
@@ -32,19 +32,25 @@ export default function DetalhesProduto({ route }) {
   }
 
   return (
-    <View>
+    <View style={estilos.container}>
       <Image
         source={{ uri: produto.image }}
-        style={{ width: 200, height: 200 }}
+        style={estilos.imagem}
       />
 
-      <Text>{produto.title}</Text>
+      <Text style={estilos.titulo}>
+        {produto.title}
+      </Text>
 
-      <Text>{produto.category}</Text>
+      <Text style={estilos.categoria}>
+        {produto.category}
+      </Text>
 
-      <Text>{produto.description}</Text>
+      <Text style={estilos.descricao}>
+        {produto.description}
+      </Text>
 
-      <Text>
+      <Text style={estilos.preco}>
         {produto.price.toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL',
@@ -53,3 +59,40 @@ export default function DetalhesProduto({ route }) {
     </View>
   );
 }
+
+const estilos = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+
+  imagem: {
+    width: 250,
+    height: 250,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+
+  titulo: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+
+  categoria: {
+    fontSize: 16,
+    marginBottom: 15,
+  },
+
+  descricao: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 20,
+  },
+
+  preco: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});

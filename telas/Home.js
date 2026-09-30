@@ -1,6 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { api } from '../servicos/api';
 
 export default function Home({navigation}) {
@@ -13,8 +13,6 @@ export default function Home({navigation}) {
     try {
       const resposta = await api.get('/products');        
       setProdutos(resposta.data);
-      const respostaCategorias = await api.get('/products/categories');
-      setCategorias(respostaCategorias.data);
     } catch (erro) {
       console.log('Erro ao buscar produtos:', erro);
     } finally {
@@ -57,7 +55,7 @@ export default function Home({navigation}) {
   }
 
   return (
-  <View>
+  <View style={estilos.container}>
     <Picker
       selectedValue={categoriaSelecionada}
       onValueChange={(valor) => {
@@ -87,15 +85,15 @@ export default function Home({navigation}) {
         <TouchableOpacity
           onPress={() => navigation.navigate('DetalhesProduto', {id: item.id})}
         >
-          <View>
+          <View style={estilos.produto}>
             <Image
-              source={{ uri: item.image }}
-              style={{ width: 100, height: 100 }}
+              source={{ uri: item.image}}
+              style={estilos.imagem}
             />
 
-            <Text>{item.title}</Text>
+            <Text style={estilos.titulo}>{item.title}</Text>
 
-            <Text>
+            <Text style={estilos.preco}>
               {item.price.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
@@ -108,3 +106,34 @@ export default function Home({navigation}) {
   </View>
   );
 }
+
+const estilos = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+
+  produto: {
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+
+  imagem: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+
+  titulo: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+
+  preco: {
+    fontSize: 16,
+    marginTop: 5,
+  },
+});
