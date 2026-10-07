@@ -34,7 +34,7 @@ export default function DetalhesProduto({ route }) {
   return (
     <View style={estilos.container}>
       <Image
-        source={{ uri: produto.image }}
+        source={{ uri: produto.images[0] }}
         style={estilos.imagem}
       />
 

@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DetalhesProduto from './telas/DetalhesProduto';
 import Home from './telas/Home';
 import InformacoesGrupo from './telas/InformacoesGrupo';
@@ -19,23 +19,39 @@ export default function App() {
         />
 
         <Stack.Screen
-          name='Home'
-          component={Home}
-          options={({navigation}) => ({
-            title: 'Produtos',
+  name="Home"
+  component={Home}
+  options={({ navigation }) => ({
+    headerTransparent: true,
+    headerTitle: () => (
+      <Text style={estilosCabecalho.titulo}>
+        Produtos
+      </Text>
+    ),
 
-            headerLeft: () => (
-              <Button
-                title='Sair'
-                onPress={() => navigation.replace('Login')}
-              />),
-            headerRight: () => (
-              <Button
-                title='Info'
-                onPress={() => navigation.navigate('InformacoesGrupo')}
-              />),
-          })}
-        />
+    headerLeft: () => (
+      <TouchableOpacity
+        style={estilosCabecalho.botao}
+        onPress={() => navigation.replace('Login')}
+      >
+        <Text style={estilosCabecalho.textoBotao}>
+          Sair
+        </Text>
+      </TouchableOpacity>
+    ),
+
+    headerRight: () => (
+      <TouchableOpacity
+        style={estilosCabecalho.botao}
+        onPress={() => navigation.navigate('InformacoesGrupo')}
+      >
+        <Text style={estilosCabecalho.textoBotao}>
+          Info
+        </Text>
+      </TouchableOpacity>
+    ),
+  })}
+/>
 
         <Stack.Screen
           name='DetalhesProduto'
@@ -51,3 +67,42 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const estilosCabecalho = StyleSheet.create({
+  titulo: {
+    fontFamily: 'NovaSquare',
+    fontSize: 22,
+    color: 'white',
+    textShadowColor: 'black',
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 5,
+  },
+
+  botao: {
+    height:35,
+    minWidth: 70,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ff0000aa',
+    shadowColor: 'red',
+    shadowOpacity: 1,
+    shadowRadius: 450
+  },
+
+  textoBotao: {
+    fontFamily: 'NovaSquare',
+    color: 'white',
+    fontSize: 13,
+    fontWeight: 'bold',
+    textShadowColor: 'black',
+    textShadowOffset: {
+      width: 1,
+      height: 1
+    },
+    textShadowRadius: 4
+  }
+});
