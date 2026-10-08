@@ -1,56 +1,85 @@
-# Welcome to your Expo app 👋
+# Trabalho React Native — DummyJSON
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo desenvolvido com **React Native, Expo e JavaScript**, utilizando a [DummyJSON](https://dummyjson.com/) para autenticação e consulta de produtos.
 
-## Get started
+## 1. Como executar o projeto
 
-1. Install dependencies
+### Pré-requisitos
+
+* [Node.js](https://nodejs.org/) instalado.
+* npm, instalado junto com o Node.js.
+* [Expo Go](https://expo.dev/go) instalado no celular, caso queira executar o aplicativo em um dispositivo físico.
+
+### Passos para execução
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/jv-bastos/trabalho-react-native-fakestoreapi.git
+   ```
+
+2. Acesse a pasta do projeto:
+
+   ```bash
+   cd trabalho-react-native-fakestoreapi
+   ```
+
+3. Instale as dependências:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+4. Inicie o Expo:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+5. Execute o aplicativo:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   * **Celular:** escaneie o QR Code com o Expo Go.
+   * **Emulador Android:** pressione `a` no terminal, com o emulador configurado.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Se necessário, utilize `npx expo start --tunnel` para tentar estabelecer a conexão com o celular por meio de um túnel.
 
-## Get a fresh project
+## 2. Como verificar os usuários disponíveis para login
 
-When you're ready, run:
+O aplicativo utiliza a [DummyJSON](https://dummyjson.com/) para consultar usuários e realizar a autenticação.
 
-```bash
-npm run reset-project
-```
+Para visualizar os usuários disponíveis, acesse o seguinte endereço no navegador:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+https://dummyjson.com/users
 
-### Other setup steps
+A resposta será exibida em formato JSON, contendo os dados dos usuários disponibilizados pela API.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Para consultar as credenciais de teste, acesse a documentação oficial:
 
-## Learn more
+https://dummyjson.com/docs/auth
 
-To learn more about developing your project with Expo, look at the following resources:
+O login é realizado por meio do endpoint:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+`POST https://dummyjson.com/auth/login`
 
-## Join the community
+O corpo da requisição deve conter o nome de usuário e a senha de um usuário válido, conforme os dados aceitos pela API.
 
-Join our community of developers creating universal apps.
+**Observação:** a DummyJSON fornece dados fictícios para testes. Não é necessário cadastrar usuários próprios para experimentar a autenticação.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 3. Integrantes do grupo
+
+| Nome completo              | RA             |
+| -------------------------- | -------------- |
+| João Vitor Bastos          | 1136345        |
+| Leonardo Ross Dapper       | 1136153        |
+| Eduardo Cardoso Debona     | 1121865        |
+| Roan Pablo Bortolini       | 1139707        |
+| Vinicius Gehring Capellari | 1138972        |
+
+## Tecnologias utilizadas
+
+* React Native
+* Expo
+* JavaScript
+* React Navigation
+* Axios
+* DummyJSON
