@@ -348,7 +348,7 @@ const estilos = StyleSheet.create({
     width: 55,
     alignSelf: 'flex-end',
     borderRadius: 25,
-    backgroundColor: '#00000099',
+    backgroundColor: '#00000023',
     borderWidth: 1,
     borderColor: '#ffffff55',
     marginBottom: 20,

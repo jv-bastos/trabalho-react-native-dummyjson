@@ -29,12 +29,11 @@ export default function Login({navigation}) {
           return;
       }        
 
-      const respostaLogin = await api.post('/user/login', {
+      await api.post('/user/login', {
           username: usuario,
           password: senha,
       });
 
-      console.log('Login realizado:', respostaLogin.data);
       navigation.replace('Home', {usuario: usuario});
     } 
     catch (erro) {
@@ -42,7 +41,7 @@ export default function Login({navigation}) {
         setMensagemErro('Não foi possível realizar o login.')
     } finally {
       setCarregando(false);
-    };
+    }
   }
 
   if (!fontsLoaded) {
@@ -182,7 +181,7 @@ const estilos = StyleSheet.create({
 
   erro: {
     color: '#ff5555',
-    fontFamily: 'Kalam',
+    fontFamily: 'Nova Square',
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 15

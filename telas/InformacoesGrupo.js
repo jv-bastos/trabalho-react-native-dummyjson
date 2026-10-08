@@ -1,50 +1,69 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, Platform, StyleSheet, Text, View } from 'react-native';
 
 export default function InformacoesGrupo() {
   return (
-    <View>
-      <Text style={estilos.titulo}>Informações do Grupo</Text>
+    <ImageBackground
+      source={require('../assets/fundoLogin.jpg')}       
+      style={estilos.container}     
+    >
+      <View style={estilos.conteudo}>
 
-      <Text style={estilos.descricao}>
-        Este aplicativo foi desenvolvido para o trabalho avaliativo da G1 da disciplina de Projeto, Design e Engenharia de Processos.
-      </Text>
+        <Text style={estilos.descricao}>
+          Este projeto foi desenvolvido para o trabalho avaliativo da G1 da disciplina de Projeto, Design e Engenharia de Processos.
+        </Text>
 
-      <Text style={estilos.subtitulo}>Integrantes:</Text>
+        <Text style={estilos.titulo}>Integrantes:</Text>
 
-      <Text style={estilos.integrante}>João Vitor Bastos dos Santos - RA: 1136345</Text>
-      <Text style={estilos.integrante}>Nome do Integrante 2 - RA: 000000</Text>
-      <Text style={estilos.integrante}>Nome do Integrante 3 - RA: 000000</Text>
-      <Text style={estilos.integrante}>Nome do Integrante 4 - RA: 000000</Text>
-    </View>
+        <Text style={estilos.descricao}>João Vitor Bastos dos Santos - RA: 1136345</Text>
+        <Text style={estilos.descricao}>Leonardo Ross Dapper - RA: 1136153</Text>
+        <Text style={estilos.descricao}>Eduardo Cardoso Debona - RA: 1121865</Text>
+        <Text style={estilos.descricao}>Roan Pablo Bortolini - RA: 1139707</Text>
+        <Text style={estilos.descricao}>Vinicius Gehring Capellari - RA: 1138972</Text>
+      </View>
+    </ImageBackground>
   );
 }
 
 const estilos = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 20,
+    flex: 1
+  },
+
+  conteudo: {
+    paddingHorizontal: 20,
+    paddingTop:
+    Platform.select({
+     ios: 120,
+     android: 140
+    })
   },
 
   titulo: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontFamily: 'NovaSquare',
+    color: 'white',
+    fontSize: 25,
+    textAlign: 'center',
+    textShadowColor: 'black',
+    textShadowOffset: {
+      width: 2,
+      height: 2
+    },
+    textShadowRadius: 5,
+    margin: 25
   },
 
   descricao: {
-    fontSize: 16,
-    lineHeight: 24,
-    marginBottom: 25,
-  },
-
-  subtitulo: {
+    fontFamily: 'NovaSquare',
+    color: 'white',
     fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 15,
-  },
-
-  integrante: {
-    fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'left',
     marginBottom: 10,
+    textShadowColor: 'black',
+    textShadowOffset: {
+      width: 1,
+      height: 1
+    },
+    textShadowRadius: 3
   },
 });
